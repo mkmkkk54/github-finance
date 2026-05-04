@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>纳指定投看盘仪表盘</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Personal Nasdaq DCA Dashboard</p>
+      <h1>纳指定投看盘仪表盘</h1>
+      <p class="subtitle">自动汇总 VIX、VXN、CNN Fear & Greed、QQQ 回撤，并按你的规则给出加仓/减速提示。</p>
+    </div>
+    <div class="hero-card">
+      <span class="label">今日建议</span>
+      <strong id="headline-action">加载中...</strong>
+      <small id="last-updated">数据更新中</small>
+    </div>
+  </header>
+
+  <main>
+    <section class="summary-grid" id="summary-grid"></section>
+
+    <section class="panel decision-panel">
+      <div>
+        <h2>综合判断</h2>
+        <p id="decision-text">正在读取数据...</p>
+      </div>
+      <ul id="decision-reasons" class="reason-list"></ul>
+    </section>
+
+    <section class="panel">
+      <div class="section-title">
+        <h2>指标详情与规则解释</h2>
+        <p>每个指标旁边都附带你的操作规则。颜色含义：绿色=可积极，蓝色=正常，橙色=谨慎，红色=风险/过热。</p>
+      </div>
+      <div class="indicator-list" id="indicator-list"></div>
+    </section>
+
+    <section class="panel two-column">
+      <div>
+        <h2>QQQ 回撤加仓规则</h2>
+        <table>
+          <thead><tr><th>从高点回撤</th><th>建议动作</th></tr></thead>
+          <tbody>
+            <tr><td>0% - 5%</td><td>正常定投</td></tr>
+            <tr><td>5% - 10%</td><td>定投金额 × 1.5</td></tr>
+            <tr><td>10% - 15%</td><td>定投金额 × 2</td></tr>
+            <tr><td>15% - 20%</td><td>额外加仓备用资金 25%</td></tr>
+            <tr><td>20% - 30%</td><td>再加备用资金 25% - 35%</td></tr>
+            <tr><td>30%+</td><td>分批投入剩余备用资金</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h2>过热减速规则</h2>
+        <div class="rule-card danger">
+          <strong>VIX &lt; 14 + Fear & Greed &gt; 80</strong>
+          <p>不追加，只维持低速定投。这个信号代表市场波动很低、情绪极度乐观，追涨性价比下降。</p>
+        </div>
+        <div class="rule-card warn">
+          <strong>QQQ 高位附近 + 情绪贪婪</strong>
+          <p>保持纪律：正常定投即可，不额外加仓；如果仓位超目标，再考虑再平衡。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>数据来源</h2>
+      <div class="links">
+        <a href="https://www.cboe.com/tradable-products/vix" target="_blank" rel="noreferrer">CBOE VIX</a>
+        <a href="https://www.cboe.com/us/indices/dashboard/VXN/" target="_blank" rel="noreferrer">CBOE VXN</a>
+        <a href="https://www.cnn.com/markets/fear-and-greed" target="_blank" rel="noreferrer">CNN Fear & Greed</a>
+        <a href="https://stooq.com/q/?s=qqq.us" target="_blank" rel="noreferrer">Stooq QQQ</a>
+        <a href="https://www.tradingview.com/symbols/NASDAQ-QQQ/" target="_blank" rel="noreferrer">TradingView QQQ</a>
+      </div>
+      <p class="note">说明：本页面只提供纪律化参考，不构成投资建议；自动抓取数据可能因数据源变更而失败，操作前建议交叉验证。</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>For personal use only · Static GitHub Pages dashboard</span>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
