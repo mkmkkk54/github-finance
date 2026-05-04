@@ -17,8 +17,11 @@
       <span class="label">今日建议</span>
       <strong id="headline-action">加载中...</strong>
       <small id="last-updated">数据更新中</small>
-      <button id="refresh-button" class="refresh-button" type="button">更新数据</button>
-      <small id="refresh-status" class="refresh-status">需先配置 Cloudflare Worker URL</small>
+      <div class="action-buttons">
+        <a class="refresh-button" href="https://github.com/mkmkkk54/github-finance/actions/workflows/update-and-deploy.yml" target="_blank" rel="noreferrer">手动更新数据</a>
+        <a class="secondary-button" href="https://github.com/mkmkkk54/github-finance/actions" target="_blank" rel="noreferrer">查看运行状态</a>
+      </div>
+      <small class="refresh-status">进入后点击 Run workflow，等待 1-3 分钟后刷新本站。</small>
     </div>
   </header>
 
@@ -79,7 +82,7 @@
         <a href="https://www.tradingview.com/symbols/NASDAQ-QQQ/" target="_blank" rel="noreferrer">TradingView QQQ</a>
       </div>
       <p class="note">说明：本页面只提供纪律化参考，不构成投资建议；自动抓取数据可能因数据源变更而失败，操作前建议交叉验证。</p>
-      <p class="note">点击「更新数据」会通过 Cloudflare Worker 触发 GitHub Actions；通常等待 1-3 分钟后刷新页面即可看到新数据。</p>
+      <p class="note">点击「手动更新数据」会打开 GitHub Actions workflow 页面；登录 GitHub 后点 Run workflow，通常等待 1-3 分钟后刷新本站即可看到新数据。</p>
     </section>
   </main>
 

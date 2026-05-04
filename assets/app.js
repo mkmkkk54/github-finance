@@ -1,4 +1,3 @@
-const WORKER_TRIGGER_URL = 'https://github-finance-refresh.2293016313mk.workers.dev';
 const fmt = (n, digits = 2) => Number.isFinite(n) ? n.toFixed(digits) : '—';
 const pct = (n) => Number.isFinite(n) ? `${n.toFixed(2)}%` : '—';
 const cls = (status) => ({'积极':'good','正常':'normal','谨慎':'warn','过热':'danger','恐慌':'good','极度恐惧':'good','恐惧':'good','中性':'normal','贪婪':'warn','极度贪婪':'danger','失败':'danger'}[status] || 'normal');
@@ -28,27 +27,6 @@ async function main(){
   ];
   document.getElementById('indicator-list').innerHTML = items.map(indicator).join('');
 }
-async function triggerRefresh(){
-  const button = document.getElementById('refresh-button');
-  const status = document.getElementById('refresh-status');
-  if (!WORKER_TRIGGER_URL || WORKER_TRIGGER_URL.includes('YOUR_WORKER_SUBDOMAIN')) {
-    status.textContent = '请先把 assets/app.js 里的 WORKER_TRIGGER_URL 改成你的 Cloudflare Worker 地址';
-    return;
-  }
-  button.disabled = true;
-  status.textContent = '正在触发 GitHub Actions...';
-  try {
-    const res = await fetch(WORKER_TRIGGER_URL, { method: 'POST' });
-    const text = await res.text();
-    if (!res.ok) throw new Error(text || `HTTP ${res.status}`);
-    status.textContent = '已触发更新，等待 1-3 分钟后刷新页面';
-  } catch (err) {
-    status.textContent = `触发失败：${err.message}`;
-  } finally {
-    button.disabled = false;
-  }
-}
-document.getElementById('refresh-button')?.addEventListener('click', triggerRefresh);
 main().catch(err=>{
   document.getElementById('headline-action').textContent='数据加载失败';
   document.getElementById('decision-text').textContent=err.message;
