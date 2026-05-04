@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-04T17:14:04.970Z",
+  "generatedAt": "2026-05-04T17:46:00.791Z",
   "sources": {
     "vixCsv": "https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv",
     "vxnCsv": "https://cdn.cboe.com/api/global/us_indices/daily_prices/VXN_History.csv",
@@ -21,17 +21,17 @@
       "action": "纳指波动正常，按计划定投。"
     },
     "fearGreed": {
-      "value": 63.6571428571429,
+      "value": 63.6,
       "status": "贪婪",
       "action": "正常定投即可，不额外追涨。"
     },
     "qqq": {
-      "close": 671.82,
+      "close": 672.62,
       "date": "2026-05-01",
       "high52w": 675.97,
       "allTimeHigh": 675.97,
-      "drawdown52wPct": -0.6139325709720866,
-      "drawdownAllTimePct": -0.6139325709720866,
+      "drawdown52wPct": -0.4955841235557812,
+      "drawdownAllTimePct": -0.4955841235557812,
       "drawdownStatus": "正常",
       "drawdownAction": "正常定投。",
       "allTimeDrawdownStatus": "正常",
@@ -42,7 +42,7 @@
     "action": "正常定投",
     "summary": "当前未触发明显恐慌或过热组合信号，按既定月定投计划执行。",
     "reasons": [
-      "QQQ 52周回撤 -0.61%，对应动作：正常定投。",
+      "QQQ 52周回撤 -0.50%，对应动作：正常定投。",
       "VIX 16.99：正常波动区间，按计划定投。",
       "Fear & Greed 64：正常定投即可，不额外追涨。"
     ]
