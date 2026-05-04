@@ -3,6 +3,8 @@ import { mkdir, writeFile } from 'node:fs/promises';
 const sources = {
   vixCsv: 'https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv',
   vxnCsv: 'https://cdn.cboe.com/api/global/us_indices/daily_prices/VXN_History.csv',
+  vixLive: 'https://cdn.cboe.com/api/global/delayed_quotes/options/_VIX.json',
+  vxnLivePage: 'https://www.cnbc.com/quotes/.VXN',
   cnnFearGreed: 'https://production.dataviz.cnn.io/index/fearandgreed/graphdata',
   qqqInfo: 'https://api.nasdaq.com/api/quote/QQQ/info?assetclass=etf',
   qqqHistoricalBase: 'https://api.nasdaq.com/api/quote/QQQ/historical?assetclass=etf'
@@ -30,6 +32,29 @@ function lastCboeClose(rows) {
   const row = rows.at(-1);
   const key = ['CLOSE','Close','close'].find(k => row[k] != null) || Object.keys(row).at(-1);
   return { value: Number(row[key]), date: row.DATE || row.Date || row.date };
+}
+
+
+async function getCnbcQuote(url) {
+  const html = await fetchText(url);
+  const priceMatch = html.match(/"price"\s*:\s*"?([0-9.]+)/) || html.match(/QuoteStrip-lastPrice">([0-9.]+)/);
+  const timeMatch = html.match(/"last_time"\s*:\s*"([^"]+)/) || html.match(/"lastTradeTime"\s*:\s*"([^"]+)/);
+  const value = Number(priceMatch?.[1]);
+  if (!Number.isFinite(value)) throw new Error(`CNBC quote missing price: ${url}`);
+  return { value, date: timeMatch?.[1] || new Date().toISOString() };
+}
+
+async function getCboeLiveQuote(url) {
+  const json = await fetchJson(url);
+  const data = json?.data;
+  const value = Number(data?.current_price ?? data?.close);
+  if (!Number.isFinite(value)) throw new Error(`CBOE live quote missing current_price: ${url}`);
+  const rawTime = data?.last_trade_time || json?.timestamp;
+  let date = json?.timestamp || rawTime || new Date().toISOString();
+  if (rawTime && /^\d{4}-\d{2}-\d{2}T/.test(rawTime)) {
+    date = rawTime.replace('T', ' ');
+  }
+  return { value, date };
 }
 function classifyVix(value) {
   if (!Number.isFinite(value)) return ['失败', '数据源暂不可用，操作前请手动交叉验证。'];
@@ -107,7 +132,8 @@ async function getQQQ() {
   const drawdownAllTimePct = (close / allTimeHigh - 1) * 100;
   const [drawdownStatus, drawdownActionText] = drawdownAction(drawdown52wPct);
   const [allTimeDrawdownStatus, allTimeDrawdownAction] = drawdownAction(drawdownAllTimePct);
-  return { close, date: ymd(latestHist.date), high52w, allTimeHigh, drawdown52wPct, drawdownAllTimePct, drawdownStatus, drawdownAction: drawdownActionText, allTimeDrawdownStatus, allTimeDrawdownAction };
+  const liveTimestamp = info?.data?.primaryData?.lastTradeTimestamp;
+  return { close, date: liveTimestamp || ymd(latestHist.date), high52w, allTimeHigh, drawdown52wPct, drawdownAllTimePct, drawdownStatus, drawdownAction: drawdownActionText, allTimeDrawdownStatus, allTimeDrawdownAction }; 
 }
 function buildDecision(metrics) {
   const reasons = [];
@@ -125,14 +151,16 @@ function buildDecision(metrics) {
   return { action: '正常定投', summary: '当前未触发明显恐慌或过热组合信号，按既定月定投计划执行。', reasons };
 }
 async function main() {
-  const [vixRows, vxnRows, fearJson, qqq] = await Promise.all([
+  const [vixRows, vxnRows, vixLiveResult, vxnLiveResult, fearJson, qqq] = await Promise.all([
     fetchText(sources.vixCsv).then(parseCsv),
     fetchText(sources.vxnCsv).then(parseCsv),
+    getCboeLiveQuote(sources.vixLive).catch(err => { console.warn(`VIX live quote failed, fallback to daily close: ${err.message}`); return null; }),
+    getCnbcQuote(sources.vxnLivePage).catch(err => { console.warn(`VXN live quote failed, fallback to daily close: ${err.message}`); return null; }),
     fetchJson(sources.cnnFearGreed),
     getQQQ()
   ]);
-  const vixLatest = lastCboeClose(vixRows);
-  const vxnLatest = lastCboeClose(vxnRows);
+  const vixLatest = vixLiveResult || lastCboeClose(vixRows);
+  const vxnLatest = vxnLiveResult || lastCboeClose(vxnRows);
   const fearValue = latestFearGreed(fearJson);
   const [vixStatus, vixAction] = classifyVix(vixLatest.value);
   const [vxnStatus, vxnAction] = classifyVxn(vxnLatest.value);
