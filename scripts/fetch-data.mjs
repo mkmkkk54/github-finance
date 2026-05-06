@@ -91,7 +91,7 @@ function withTimes(raw, defaultZone = 'America/New_York') {
   return {
     raw: String(raw || ''),
     iso: date.toISOString(),
-    usPacific: formatInZone(date, 'America/Los_Angeles'),
+    usEastern: formatInZone(date, 'America/New_York'),
     china: formatInZone(date, 'Asia/Shanghai')
   };
 }
@@ -104,17 +104,20 @@ function lastCboeClose(rows) {
 async function getCnbcQuote(url) {
   const html = await fetchText(url);
   const priceMatch = html.match(/"price"\s*:\s*"?([0-9.]+)/) || html.match(/QuoteStrip-lastPrice">([0-9.]+)/);
-  const timeMatch = html.match(/"last_time"\s*:\s*"([^"]+)/) || html.match(/"lastTradeTime"\s*:\s*"([^"]+)/);
   const value = Number(priceMatch?.[1]);
   if (!Number.isFinite(value)) throw new Error(`CNBC quote missing price: ${url}`);
-  return { value, time: withTimes(timeMatch?.[1] || new Date().toISOString(), 'America/New_York') };
+  // CNBC 页面 HTML 只有上一交易日的 date 元数据，价格本身是实时刷新的。
+  // 用抓取时刻作为时间戳，避免显示成昨天。
+  return { value, time: withTimes(new Date().toISOString(), 'UTC') };
 }
 async function getCboeLiveQuote(url) {
   const json = await fetchJson(url);
   const data = json?.data;
   const value = Number(data?.current_price ?? data?.close);
   if (!Number.isFinite(value)) throw new Error(`CBOE live quote missing current_price: ${url}`);
-  const rawTime = data?.last_trade_time || json?.timestamp || new Date().toISOString();
+  // CBOE 文件级 timestamp 是 UTC，对应 current_price 实时快照
+  // last_trade_time 是 ET，常常滞后到上一交易日，避免误用
+  const rawTime = json?.timestamp || data?.last_trade_time || new Date().toISOString();
   return { value, time: withTimes(rawTime, 'UTC') };
 }
 function classifyVix(value) {

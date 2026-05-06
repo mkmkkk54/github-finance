@@ -2,7 +2,7 @@ const fmt = (n, digits = 2) => Number.isFinite(n) ? n.toFixed(digits) : '—';
 const pct = (n) => Number.isFinite(n) ? `${n.toFixed(2)}%` : '—';
 const signed = (n, digits = 2) => Number.isFinite(n) ? `${n > 0 ? '+' : ''}${n.toFixed(digits)}` : '—';
 const cls = (status) => ({'积极':'good','正常':'normal','谨慎':'warn','过热':'danger','恐慌':'good','极度恐惧':'good','恐惧':'good','中性':'normal','贪婪':'warn','极度贪婪':'danger','失败':'danger'}[status] || 'normal');
-const timeText = (time) => time ? `美西：${time.usPacific}<br>中国：${time.china}` : '';
+const timeText = (time) => time ? `美东：${time.usEastern}<br>中国：${time.china}` : '';
 function card(name, value, status, time, extra = ''){return `<article class="metric-card"><div class="name">${name}</div><div class="value">${value}</div>${extra ? `<div class="metric-extra">${extra}</div>` : ''}<span class="badge ${cls(status)}">${status}</span>${time ? `<div class="metric-time">${timeText(time)}</div>` : ''}</article>`}
 function indicator(item){return `<article class="indicator"><div class="indicator-header"><div><h3>${item.name}</h3><a href="${item.url}" target="_blank" rel="noreferrer">查看来源</a></div><div class="num">${item.value}</div></div><span class="badge ${cls(item.status)}">${item.status}</span>${item.time ? `<p class="desc"><strong>数据时间：</strong><br>${timeText(item.time)}</p>` : ''}${item.details ? `<div class="detail-grid">${item.details.map(([k,v])=>`<div><span>${k}</span><strong>${v}</strong></div>`).join('')}</div>` : ''}<p class="desc">${item.explain}</p><p class="desc"><strong>建议：</strong>${item.action}</p></article>`}
 function valuationPanel(v){
@@ -16,7 +16,7 @@ async function main(){
   const data = await res.json();
   const m = data.metrics;
   document.getElementById('headline-action').textContent = data.decision.action;
-  document.getElementById('last-updated').innerHTML = `页面生成<br>美西：${data.generatedTime?.usPacific || '—'}<br>中国：${data.generatedTime?.china || new Date(data.generatedAt).toLocaleString('zh-CN')}`;
+  document.getElementById('last-updated').innerHTML = `页面生成<br>美东：${data.generatedTime?.usEastern || '—'}<br>中国：${data.generatedTime?.china || new Date(data.generatedAt).toLocaleString('zh-CN')}`;
   document.getElementById('summary-grid').innerHTML = [
     card('VIX 恐慌指数', fmt(m.vix.value), m.vix.status, m.vix.time),
     card('VXN 纳指波动率', fmt(m.vxn.value), m.vxn.status, m.vxn.time),
