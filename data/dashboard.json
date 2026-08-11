@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-10T23:05:26.374Z",
+  "generatedAt": "2026-08-11T23:11:32.490Z",
   "generatedTime": {
-    "raw": "2026-08-10T23:05:26.374Z",
-    "iso": "2026-08-10T23:05:26.374Z",
-    "usEastern": "2026-08-10 19:05:26",
-    "china": "2026-08-11 07:05:26"
+    "raw": "2026-08-11T23:11:32.490Z",
+    "iso": "2026-08-11T23:11:32.490Z",
+    "usEastern": "2026-08-11 19:11:32",
+    "china": "2026-08-12 07:11:32"
   },
   "sources": {
     "vixCsv": "https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv",
@@ -23,75 +23,75 @@
   },
   "metrics": {
     "vix": {
-      "value": 15.46,
+      "value": 15.28,
       "time": {
-        "raw": "2026-08-10 23:04:47",
-        "iso": "2026-08-10T23:04:47.000Z",
-        "usEastern": "2026-08-10 19:04:47",
-        "china": "2026-08-11 07:04:47"
+        "raw": "2026-08-11 23:10:47",
+        "iso": "2026-08-11T23:10:47.000Z",
+        "usEastern": "2026-08-11 19:10:47",
+        "china": "2026-08-12 07:10:47"
       },
       "status": "正常",
       "action": "正常波动区间，按计划定投。"
     },
     "vxn": {
-      "value": 23.04,
+      "value": 22.38,
       "time": {
-        "raw": "2026-08-10T23:05:27.869Z",
-        "iso": "2026-08-10T23:05:27.869Z",
-        "usEastern": "2026-08-10 19:05:27",
-        "china": "2026-08-11 07:05:27"
+        "raw": "2026-08-11T23:11:32.805Z",
+        "iso": "2026-08-11T23:11:32.805Z",
+        "usEastern": "2026-08-11 19:11:32",
+        "china": "2026-08-12 07:11:32"
       },
       "status": "正常",
       "action": "纳指波动正常，按计划定投。"
     },
     "fearGreed": {
-      "value": 64.4,
+      "value": 60.8,
       "time": {
-        "raw": "2026-08-10T23:05:26.374Z",
-        "iso": "2026-08-10T23:05:26.374Z",
-        "usEastern": "2026-08-10 19:05:26",
-        "china": "2026-08-11 07:05:26"
+        "raw": "2026-08-11T23:11:32.490Z",
+        "iso": "2026-08-11T23:11:32.490Z",
+        "usEastern": "2026-08-11 19:11:32",
+        "china": "2026-08-12 07:11:32"
       },
       "status": "贪婪",
       "action": "正常定投即可，不额外追涨。"
     },
     "qqq": {
-      "close": 720.5633,
-      "netChange": -0.3067,
-      "percentageChange": -0.04,
-      "deltaIndicator": "down",
-      "bid": 720.5,
-      "ask": 720.54,
-      "volume": 26181185.736212,
-      "previousClose": 723.03,
-      "dayRange": "$724.67/$720.33",
+      "close": 718.7267,
+      "netChange": 0.2767,
+      "percentageChange": 0.04,
+      "deltaIndicator": "up",
+      "bid": 718.7,
+      "ask": 718.72,
+      "volume": 29254036.052275,
+      "previousClose": 720.87,
+      "dayRange": "$723.3/$715.79",
       "time": {
-        "raw": "Aug 10, 2026 7:05 PM ET",
-        "iso": "2026-08-10T23:05:00.000Z",
-        "usEastern": "2026-08-10 19:05:00",
-        "china": "2026-08-11 07:05:00"
+        "raw": "Aug 11, 2026 7:10 PM ET",
+        "iso": "2026-08-11T23:10:00.000Z",
+        "usEastern": "2026-08-11 19:10:00",
+        "china": "2026-08-12 07:10:00"
       },
       "high52w": 748.65,
       "allTimeHigh": 748.65,
-      "drawdown52wPct": -3.7516462966673325,
-      "drawdownAllTimePct": -3.7516462966673325,
+      "drawdown52wPct": -3.9969678755092386,
+      "drawdownAllTimePct": -3.9969678755092386,
       "drawdownStatus": "正常",
       "drawdownAction": "正常定投。",
       "allTimeDrawdownStatus": "正常",
       "allTimeDrawdownAction": "正常定投。"
     },
     "ndx": {
-      "value": 29621.81,
-      "netChange": -100.49,
-      "percentageChange": -0.34,
+      "value": 29525.48,
+      "netChange": -96.33,
+      "percentageChange": -0.33,
       "deltaIndicator": "down",
-      "previousClose": 29722.3,
-      "dayRange": "29,606.48 - 29,784.21",
+      "previousClose": 29621.81,
+      "dayRange": "29,427.61 - 29,705.80",
       "time": {
-        "raw": "Aug 10, 2026",
-        "iso": "2026-08-10T23:05:26.771Z",
-        "usEastern": "2026-08-10 19:05:26",
-        "china": "2026-08-11 07:05:26"
+        "raw": "Aug 11, 2026",
+        "iso": "2026-08-11T23:11:32.657Z",
+        "usEastern": "2026-08-11 19:11:32",
+        "china": "2026-08-12 07:11:32"
       }
     },
     "valuation": {
@@ -101,10 +101,10 @@
         "type": "TTM / trailing，非前瞻",
         "forwardLooking": false,
         "time": {
-          "raw": "Aug 10, 2026, 4:00 PM EDT",
-          "iso": "2026-08-10T23:05:26.853Z",
-          "usEastern": "2026-08-10 19:05:26",
-          "china": "2026-08-11 07:05:26"
+          "raw": "Aug 11, 2026, 4:00 PM EDT",
+          "iso": "2026-08-11T23:11:32.844Z",
+          "usEastern": "2026-08-11 19:11:32",
+          "china": "2026-08-12 07:11:32"
         }
       },
       "percentileEstimate": 72,
@@ -149,9 +149,9 @@
     "action": "正常定投",
     "summary": "当前未触发明显恐慌或过热组合信号，按既定月定投计划执行。",
     "reasons": [
-      "QQQ 当前价 720.56，52周回撤 -3.75%，对应动作：正常定投。",
-      "VIX 15.46：正常波动区间，按计划定投。",
-      "Fear & Greed 64：正常定投即可，不额外追涨。",
+      "QQQ 当前价 718.73，52周回撤 -4.00%，对应动作：正常定投。",
+      "VIX 15.28：正常波动区间，按计划定投。",
+      "Fear & Greed 61：正常定投即可，不额外追涨。",
       "QQQ PE 33.05（TTM / trailing，非前瞻），估算历史分位 72%：TTM PE 略高于常见中枢，维持纪律定投，不额外追涨。"
     ]
   }
