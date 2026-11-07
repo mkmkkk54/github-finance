@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-11-06T02:42:28.558Z",
+  "generatedAt": "2026-11-07T02:09:25.100Z",
   "generatedTime": {
-    "raw": "2026-11-06T02:42:28.558Z",
-    "iso": "2026-11-06T02:42:28.558Z",
-    "usEastern": "2026-11-05 21:42:28",
-    "china": "2026-11-06 10:42:28"
+    "raw": "2026-11-07T02:09:25.100Z",
+    "iso": "2026-11-07T02:09:25.100Z",
+    "usEastern": "2026-11-06 21:09:25",
+    "china": "2026-11-07 10:09:25"
   },
   "sources": {
     "vixCsv": "https://cdn.cboe.com/api/global/us_indices/daily_prices/VIX_History.csv",
@@ -23,91 +23,91 @@
   },
   "metrics": {
     "vix": {
-      "value": 28.18,
+      "value": 25.64,
       "time": {
-        "raw": "2026-11-06 01:04:51",
-        "iso": "2026-11-06T01:04:51.000Z",
-        "usEastern": "2026-11-05 20:04:51",
-        "china": "2026-11-06 09:04:51"
+        "raw": "2026-11-07 01:03:32",
+        "iso": "2026-11-07T01:03:32.000Z",
+        "usEastern": "2026-11-06 20:03:32",
+        "china": "2026-11-07 09:03:32"
       },
       "status": "谨慎",
       "action": "波动升高，保持纪律，观察是否出现更好加仓点。"
     },
     "vxn": {
-      "value": 38.26,
+      "value": 34.02,
       "time": {
-        "raw": "2026-11-06T02:42:30.302Z",
-        "iso": "2026-11-06T02:42:30.302Z",
-        "usEastern": "2026-11-05 21:42:30",
-        "china": "2026-11-06 10:42:30"
+        "raw": "2026-11-07T02:09:26.739Z",
+        "iso": "2026-11-07T02:09:26.739Z",
+        "usEastern": "2026-11-06 21:09:26",
+        "china": "2026-11-07 10:09:26"
       },
-      "status": "恐慌",
-      "action": "纳指波动明显升高，可重点关注分批加仓。"
+      "status": "谨慎",
+      "action": "纳指波动偏高，按计划分批，不要一次性重仓。"
     },
     "fearGreed": {
-      "value": 19.8775510204082,
+      "value": 22.0792756539235,
       "time": {
-        "raw": "2026-11-06T02:42:28.558Z",
-        "iso": "2026-11-06T02:42:28.558Z",
-        "usEastern": "2026-11-05 21:42:28",
-        "china": "2026-11-06 10:42:28"
+        "raw": "2026-11-07T02:09:25.100Z",
+        "iso": "2026-11-07T02:09:25.100Z",
+        "usEastern": "2026-11-06 21:09:25",
+        "china": "2026-11-07 10:09:25"
       },
       "status": "极度恐惧",
       "action": "适合关注加仓信号。"
     },
     "qqq": {
-      "close": 691.95,
-      "netChange": 6.67,
-      "percentageChange": 0.97,
+      "close": 656.1,
+      "netChange": 9.05,
+      "percentageChange": 1.4,
       "deltaIndicator": "up",
       "bid": null,
       "ask": null,
-      "volume": 62366943,
-      "previousClose": 691.95,
+      "volume": 70691374,
+      "previousClose": 647.05,
       "dayRange": "N/A",
       "time": {
-        "raw": "Nov 4, 2026",
-        "iso": "2026-11-06T02:42:29.243Z",
-        "usEastern": "2026-11-05 21:42:29",
-        "china": "2026-11-06 10:42:29"
+        "raw": "Nov 6, 2026",
+        "iso": "2026-11-07T02:09:25.670Z",
+        "usEastern": "2026-11-06 21:09:25",
+        "china": "2026-11-07 10:09:25"
       },
       "high52w": 762.86,
       "allTimeHigh": 762.86,
-      "drawdown52wPct": -9.295283538263899,
-      "drawdownAllTimePct": -9.295283538263899,
+      "drawdown52wPct": -13.994704139684867,
+      "drawdownAllTimePct": -13.994704139684867,
       "drawdownStatus": "积极",
-      "drawdownAction": "定投金额 × 1.5。",
+      "drawdownAction": "定投金额 × 2。",
       "allTimeDrawdownStatus": "积极",
-      "allTimeDrawdownAction": "定投金额 × 1.5。"
+      "allTimeDrawdownAction": "定投金额 × 2。"
     },
     "ndx": {
-      "value": 26629.81,
-      "netChange": -1807.36,
-      "percentageChange": -6.36,
-      "deltaIndicator": "down",
-      "previousClose": 28437.17,
-      "dayRange": "26,606.43 - 28,078.19",
+      "value": 26989.99,
+      "netChange": 360.18,
+      "percentageChange": 1.35,
+      "deltaIndicator": "up",
+      "previousClose": 26629.81,
+      "dayRange": "26,887.69 - 27,316.09",
       "time": {
-        "raw": "Nov 5, 2026",
-        "iso": "2026-11-06T02:42:28.897Z",
-        "usEastern": "2026-11-05 21:42:28",
-        "china": "2026-11-06 10:42:28"
+        "raw": "Nov 6, 2026",
+        "iso": "2026-11-07T02:09:25.424Z",
+        "usEastern": "2026-11-06 21:09:25",
+        "china": "2026-11-07 10:09:25"
       }
     },
     "valuation": {
       "primary": {
-        "value": 25.52,
+        "value": 25.85,
         "source": "StockAnalysis QQQ",
         "type": "TTM / trailing，非前瞻",
         "forwardLooking": false,
         "time": {
           "raw": "Oct 30, 2026, 11:43 AM EDT",
-          "iso": "2026-11-06T02:42:28.966Z",
-          "usEastern": "2026-11-05 21:42:28",
-          "china": "2026-11-06 10:42:28"
+          "iso": "2026-11-07T02:09:25.443Z",
+          "usEastern": "2026-11-06 21:09:25",
+          "china": "2026-11-07 10:09:25"
         }
       },
-      "percentileEstimate": 35,
+      "percentileEstimate": 37,
       "percentileMethod": "估算分位：使用常见纳指/QQQ TTM PE 阈值锚点插值（20≈10%、28≈50%、35≈80%、38≈90%、42≈96%），不是官方精确历史序列。若需要精确历史百分位，建议接 YCharts/Koyfin/FactSet/Wind 等付费历史数据。",
       "status": "积极",
       "action": "TTM PE 接近或低于常见中枢，可结合回撤规则提高定投。",
@@ -118,7 +118,7 @@
           "metric": "PE Ratio",
           "type": "TTM / trailing，非前瞻",
           "automated": true,
-          "value": 25.52,
+          "value": 25.85,
           "status": "自动抓取成功"
         },
         {
@@ -150,10 +150,10 @@
     "summary": "市场出现恐慌或明显回撤信号，可以按你的加仓表分批执行，避免一次性打满。",
     "reasons": [
       "至少一个恐慌/深度回撤信号出现，可按计划分批加仓。",
-      "QQQ 当前价 691.95，52周回撤 -9.30%，对应动作：定投金额 × 1.5。",
-      "VIX 28.18：波动升高，保持纪律，观察是否出现更好加仓点。",
-      "Fear & Greed 20：适合关注加仓信号。",
-      "QQQ PE 25.52（TTM / trailing，非前瞻），估算历史分位 35%：TTM PE 接近或低于常见中枢，可结合回撤规则提高定投。"
+      "QQQ 当前价 656.10，52周回撤 -13.99%，对应动作：定投金额 × 2。",
+      "VIX 25.64：波动升高，保持纪律，观察是否出现更好加仓点。",
+      "Fear & Greed 22：适合关注加仓信号。",
+      "QQQ PE 25.85（TTM / trailing，非前瞻），估算历史分位 37%：TTM PE 接近或低于常见中枢，可结合回撤规则提高定投。"
     ]
   }
 }
